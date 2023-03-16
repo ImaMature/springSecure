@@ -15,9 +15,8 @@ public class IndexController {
         return "index";
     }
     @GetMapping("/login")
-    @ResponseBody
     public String login(){
-        return "login";
+        return "./common/login";
     }
     @GetMapping("/user")
     @ResponseBody
