@@ -12,8 +12,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        //스프링 시큐리티 5.3.2 버전 참고함
-        //https://docs.spring.io/spring-security/site/docs/5.3.2.RELEASE/reference/html5/#servlet-authorization-filtersecurityinterceptor
+        //스프링 시큐리티 5.7.7 버전 참고함
+        //https://docs.spring.io/spring-security/reference/5.7/servlet/authentication/passwords/form.html#page-title
         http
             .authorizeHttpRequests(authorize -> authorize
                     .mvcMatchers("/user/**").authenticated()
