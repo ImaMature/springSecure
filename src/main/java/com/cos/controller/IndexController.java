@@ -1,11 +1,14 @@
 package com.cos.controller;
 
+import com.cos.model.dto.common.ResultDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller //view를 리턴
 public class IndexController {
+
+
     //localhost:8089/
     //localhost:8089
     @GetMapping({"","/"})
@@ -33,14 +36,9 @@ public class IndexController {
     public String admin(){
         return "admin";
     }
-    @GetMapping("/join")
-    @ResponseBody
-    public String join(){
-        return "join";
+    @GetMapping("/sign_up")
+    public String sign_up(){
+        return "./user/sign_up";
     }
-    @GetMapping("/joinProc")
-    @ResponseBody
-    public String joinProc(){
-        return "회원가입 완료";
-    }
+
 }
