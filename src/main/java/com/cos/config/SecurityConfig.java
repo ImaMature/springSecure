@@ -22,7 +22,7 @@ public class SecurityConfig {
         //https://docs.spring.io/spring-security/reference/5.7/servlet/authentication/passwords/form.html#page-title
         http
             .authorizeHttpRequests(authorize -> authorize
-                    .mvcMatchers("/user/**").authenticated()
+                    .mvcMatchers("/user/**").authenticated() //인증만 되면 들어갈 수 있는 주소
                     .mvcMatchers("/manager/**").hasAnyRole("ADMIN", "MANAGER") //ADMIN이나 MANAGER라는 Role이 있음 접근 가능
                     .mvcMatchers("/admin/**").hasRole("ADMIN")
                     .anyRequest().permitAll()
