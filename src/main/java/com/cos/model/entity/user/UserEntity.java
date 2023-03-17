@@ -48,5 +48,6 @@ public class UserEntity extends BaseTimeEntity {
         this.u_email = userDto.getU_email();
         this.u_address = userDto.getU_address();
         this.u_birth = userDto.getU_birth();
+        this.role = userDto.getRole();
     }
 }

@@ -50,8 +50,7 @@ public class IndexController {
 
     @PostMapping("/sign_up_success")
     public String sign_up_success(UserDto userDto){
-        String encPw = bCPwEnCode.encode(userDto.getU_pw());
-        userDto.setU_pw(encPw);
+        userDto.setU_pw(bCPwEnCode.encode(userDto.getU_pw()));
         userDto.setRole("USER");
 
         System.out.println(userDto);
