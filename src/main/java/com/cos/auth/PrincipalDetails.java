@@ -28,6 +28,7 @@ public class PrincipalDetails implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> collection = new ArrayList<>(); //ArrayList는 Collection의 자식
         collection.add((GrantedAuthority) userEntity::getRole);
+        System.out.println("getRole : "+userEntity.getRole());
         return collection;
     }
 

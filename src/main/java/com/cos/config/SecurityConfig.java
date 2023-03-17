@@ -10,7 +10,9 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration //해당 클래스가 Spring container에서 관리되는 config 설정임을 알려주며 @Bean을 등록할 수 있게 함
 @EnableWebSecurity
-@EnableMethodSecurity(securedEnabled = true) //secured 어노테이션 활성화
+@EnableMethodSecurity(securedEnabled = true, prePostEnabled = true)
+//securedEnabled = true => secured 어노테이션 활성화
+//prePostEnabled = true => preAuthorize 어노테이션 활성화
 public class SecurityConfig {
     //패스워드 암호화
     @Bean
