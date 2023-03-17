@@ -17,7 +17,7 @@ import java.util.Collections;
 @Builder
 public class UserEntity extends BaseTimeEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int u_no;
+    private int uno;
     @Column(name="uid")
     private String uid;
     @Column(name="upw")

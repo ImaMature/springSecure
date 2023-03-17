@@ -3,6 +3,7 @@ package com.cos.controller;
 import com.cos.Service.UserService;
 import com.cos.model.dto.user.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,6 +48,13 @@ public class IndexController {
     @GetMapping("/sign_up")
     public String sign_up(){
         return "./user/sign_up";
+    }
+
+    @Secured("ADMIN")
+    @GetMapping("/info")
+    @ResponseBody
+    public String info(){
+        return "info";
     }
 
     @PostMapping("/sign_up_success")
