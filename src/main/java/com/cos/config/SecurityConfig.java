@@ -29,7 +29,9 @@ public class SecurityConfig {
 
             ).formLogin(login -> login   //로그인 페이지로 이동
                         .loginPage("/login")
-                );
+                        .loginProcessingUrl("/login_process") //login_success 주소가 호출되면 시큐리티가 낚아채서 대신 로그인 해줌
+                        .defaultSuccessUrl("/") //deafault_success
+            );
         return http.build();
     }
 }

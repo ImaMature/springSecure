@@ -28,6 +28,7 @@ public class IndexController {
     public String login(){
         return "./common/login";
     }
+
     @GetMapping("/user")
     @ResponseBody
     public String user(){
@@ -50,10 +51,8 @@ public class IndexController {
 
     @PostMapping("/sign_up_success")
     public String sign_up_success(UserDto userDto){
-        userDto.setU_pw(bCPwEnCode.encode(userDto.getU_pw()));
+        userDto.setUpw(bCPwEnCode.encode(userDto.getUpw()));
         userDto.setRole("USER");
-
-        System.out.println(userDto);
         userService.SignUp(userDto);
         return "redirect:/login";
     }

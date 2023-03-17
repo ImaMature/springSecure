@@ -14,13 +14,13 @@ public class UserService {
     UserRepository userRepo;
 
     //회원가입
-    public int SignUp(UserDto userDto){
+    public boolean SignUp(UserDto userDto){
         System.out.println("서비스 들어옴");
         UserEntity userEntity = UserEntity.ByUserBuilder()
                 .userDto(userDto)
                 .build();
         System.out.println(userEntity);
         userRepo.save(userEntity);
-        return 1;
+        return true;
     }
 }
