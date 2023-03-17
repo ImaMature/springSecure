@@ -3,12 +3,11 @@ package com.cos.model.dto.user;
 import com.cos.model.entity.user.UserEntity;
 import lombok.*;
 
-import javax.persistence.Column;
 import java.time.LocalDateTime;
 @Getter @Setter @ToString @Builder
 @AllArgsConstructor @NoArgsConstructor
 public class UserDto {
-    private int u_id;
+    private String u_id;
     private String u_pw;
     private String u_name;
     private String u_email;

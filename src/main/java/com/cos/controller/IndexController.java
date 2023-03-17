@@ -1,7 +1,9 @@
 package com.cos.controller;
 
-import com.cos.model.dto.common.ResultDto;
+import com.cos.Service.UserService;
 import com.cos.model.dto.user.UserDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,9 +12,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller //view를 리턴
 public class IndexController {
 
+    @Autowired
+    public UserService userService;
 
-    //localhost:8089/
-    //localhost:8089
+    @Autowired
+    private BCryptPasswordEncoder bCPwEnCode;
+
     @GetMapping({"","/"})
     public String index(){
         //mustache 기본 폴더는 src/main/resources/
@@ -44,11 +49,14 @@ public class IndexController {
     }
 
     @PostMapping("/sign_up_success")
-    @ResponseBody
     public String sign_up_success(UserDto userDto){
-        System.out.println(userDto);
+        String encPw = bCPwEnCode.encode(userDto.getU_pw());
+        userDto.setU_pw(encPw);
+        userDto.setRole("USER");
 
-        return "/";
+        System.out.println(userDto);
+        userService.SignUp(userDto);
+        return "redirect:/login";
     }
 
 }

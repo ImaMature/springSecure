@@ -1,20 +1,25 @@
 package com.cos.model.entity.user;
 
+import com.cos.model.dto.user.UserDto;
 import com.cos.model.entity.common.BaseTimeEntity;
 import lombok.*;
+import org.springframework.util.Assert;
 
 import javax.persistence.*;
+import java.util.Collections;
+
 @Entity
-@Getter
-@Setter
+@Data
+@EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-@Table(name="user")
+@Table(name="users")
 @Builder
 public class UserEntity extends BaseTimeEntity {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private int u_id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int u_no;
+    @Column(name="u_id")
+    private String u_id;
     @Column(name="u_pw")
     private String u_pw;
     @Column(name="u_name")
@@ -28,4 +33,20 @@ public class UserEntity extends BaseTimeEntity {
     @Column(name="u_address")
     private String u_address;
 
+    @Builder(builderClassName = "ByUserBuilder", builderMethodName = "ByUserBuilder")
+    public UserEntity(UserDto userDto){
+        Assert.hasText(userDto.getU_id().trim(), "id 값이 없음");
+        Assert.hasText(userDto.getU_pw().trim(), "pw 값이 없음");
+        Assert.hasText(userDto.getU_name().trim(), "username 값이 없음");
+        Assert.hasText(userDto.getU_email().trim(), "email 값이 없음");
+        Assert.hasText(userDto.getU_address().trim(), "address 값이 없음");
+        Assert.hasText(userDto.getU_birth().trim(), "birth 값이 없음");
+
+        this.u_id = userDto.getU_id();
+        this.u_pw = userDto.getU_pw();
+        this.u_name = userDto.getU_name();
+        this.u_email = userDto.getU_email();
+        this.u_address = userDto.getU_address();
+        this.u_birth = userDto.getU_birth();
+    }
 }
