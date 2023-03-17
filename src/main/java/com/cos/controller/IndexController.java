@@ -1,8 +1,10 @@
 package com.cos.controller;
 
 import com.cos.model.dto.common.ResultDto;
+import com.cos.model.dto.user.UserDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller //view를 리턴
@@ -39,6 +41,14 @@ public class IndexController {
     @GetMapping("/sign_up")
     public String sign_up(){
         return "./user/sign_up";
+    }
+
+    @PostMapping("/sign_up_success")
+    @ResponseBody
+    public String sign_up_success(UserDto userDto){
+        System.out.println(userDto);
+
+        return "/";
     }
 
 }
