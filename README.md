@@ -16,16 +16,4 @@ Spring boot 2.7.9
 
 ## 라이브러리
 
-Lombok
-
-Spring Boot DevTools
-
-MySQL Driver
-
-Spring Data JPA
-
-Spring Security
-
-Mustache
-
-Spring web
+Lombok, Spring Boot DevTools, MySQL Driver, Spring Data JPA, Spring Security, Mustache, Spring web
